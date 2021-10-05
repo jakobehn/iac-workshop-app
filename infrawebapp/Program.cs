@@ -27,6 +27,9 @@ namespace infrawebapp
             {
                 var builtConfig = config.Build();
                 var c = builtConfig["KeyVaultName"];
+                if (string.IsNullOrEmpty(c)) {
+                    return;
+                }
                 var secretClient = new SecretClient(
                     new Uri($"https://{builtConfig["KeyVaultName"]}.vault.azure.net/"), new DefaultAzureCredential());
                 config.AddAzureKeyVault(secretClient, new KeyVaultSecretManager());
