@@ -6,7 +6,7 @@ COPY ./infrawebapp/*.csproj ./
 RUN dotnet restore
 
 # Copy everything else and build
-COPY ../infrawebapp/ ./
+COPY ./infrawebapp/ ./
 RUN dotnet publish -c Release -o out
 
 # Build runtime image
